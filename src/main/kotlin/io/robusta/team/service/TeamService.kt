@@ -14,4 +14,9 @@ class TeamService(
     fun getAllTeams(): List<Team> {
         return teamRepository.findAll().toList()
     }
+
+    @Transactional(readOnly = true)
+    fun getTeamById(id : Long): Team? {
+        return teamRepository.findById(id).orElse(null)
+    }
 }
